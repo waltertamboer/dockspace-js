@@ -2,7 +2,6 @@
     "name": "@waltertamboer/dockspace-js",
     "license": "MIT",
     "version": "0.0.1",
-    "private": true,
     "homepage": "https://github.com/waltertamboer/dockspace-js",
     "main": "dist/dockspace.js",
     "types": "dist/index.d.ts",
@@ -26,7 +25,7 @@
         "type": "git",
         "url": "https://github.com/waltertamboer/dockspace-js.git"
     },
-    "dependencies": {
+    "devDependencies": {
         "ts-loader": "^9.5.1",
         "typescript": "^5.3.3",
         "webpack": "^5.89.0",
