@@ -1,0 +1,43 @@
+{
+    "name": "@waltertamboer/dockspace-js",
+    "license": "MIT",
+    "version": "0.0.1",
+    "private": true,
+    "homepage": "https://github.com/waltertamboer/dockspace-js",
+    "main": "dist/dockspace.js",
+    "types": "dist/index.d.ts",
+    "author": {
+        "name": "Walter Tamboer",
+        "url": "https://waltertamboer.nl"
+    },
+    "keywords": [
+        "dockspace",
+        "docking",
+        "splitter",
+        "splitters",
+        "split",
+        "pane",
+        "panels"
+    ],
+    "bugs": {
+        "url": "https://github.com/waltertamboer/dockspace-js/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/waltertamboer/dockspace-js.git"
+    },
+    "dependencies": {
+        "ts-loader": "^9.5.1",
+        "typescript": "^5.3.3",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4"
+    },
+    "scripts": {
+        "build": "webpack -c webpack.config.js",
+        "watch": "webpack --watch -c webpack.config.js"
+    },
+    "files": [
+        "dist/",
+        "LICENSE"
+    ]
+}
