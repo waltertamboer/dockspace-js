@@ -27,7 +27,7 @@ module.exports = {
         globalObject: 'this',
         library: {
             name: 'Dockspace',
-            type: 'var',
+            type: 'umd',
         },
     },
 };
