@@ -23,9 +23,12 @@ jobs:
           scope: '@waltertamboer'
       - run: yarn
       - run: yarn run build
-      - run: yarn publish --access public --patch
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: yarn config set version-git-tag false
+      - run: yarn config set version-tag-prefix ""
+      - run: yarn version --patch --no-git-tag-version
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bumped the package version after publishing.
+      - run: yarn publish --access public --patch --no-git-tag-version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
