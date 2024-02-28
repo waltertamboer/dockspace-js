@@ -29,6 +29,6 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Bumped the package version after publishing.
-      - run: yarn publish --access public --patch --no-git-tag-version
+      - run: yarn publish --access public --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
