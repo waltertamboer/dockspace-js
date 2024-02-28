@@ -1,10 +1,10 @@
 name: Publish Package to npmjs
+
 on:
   push:
     branches:
       - 'master'
-  release:
-    types: [ published ]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +19,9 @@ jobs:
           scope: '@waltertamboer'
       - run: yarn
       - run: yarn run build
-      - run: yarn publish
+      - run: yarn publish --access public --patch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Bumped the package version after publishing.
