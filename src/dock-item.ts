@@ -2,8 +2,6 @@ import { DockContainer } from './dock-container';
 import { DockPosition } from './dock-position';
 import { DockSize } from './dock-size';
 import { DockSpace } from './dock-space';
-import { DockContainerRow } from './dock-container-row';
-import { LinkedListNode } from './linked-list/linked-list-node';
 
 export abstract class DockItem {
     /**
