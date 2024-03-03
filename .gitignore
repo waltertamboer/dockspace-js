@@ -1,3 +1,4 @@
 dist/
 node_modules/
+src/index.ts
 yarn-error.log

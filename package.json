@@ -3,8 +3,9 @@
     "license": "MIT",
     "version": "0.0.12",
     "homepage": "https://github.com/waltertamboer/dockspace-js",
-    "main": "dist/dockspace.js",
-    "types": "dist/index.d.ts",
+    "main": "dist/cjs/dockspace.js",
+    "module": "dist/es/dockspace.js",
+    "types": "dist/types/index.d.ts",
     "author": {
         "name": "Walter Tamboer",
         "url": "https://waltertamboer.nl"
@@ -26,14 +27,22 @@
         "url": "https://github.com/waltertamboer/dockspace-js.git"
     },
     "devDependencies": {
-        "ts-loader": "^9.5.1",
-        "typescript": "^5.3.3",
-        "webpack": "^5.89.0",
-        "webpack-cli": "^5.1.4"
+        "@rollup/plugin-commonjs": "^25.0.7",
+        "@rollup/plugin-node-resolve": "^15.2.3",
+        "@rollup/plugin-typescript": "^11.1.6",
+        "@types/node": "^20.11.24",
+        "es-dev-server": "^2.1.0",
+        "rimraf": "^5.0.5",
+        "rollup": "^4.12.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "tslib": "^2.6.2",
+        "typescript": "^5.3.3"
     },
     "scripts": {
-        "build": "webpack -c webpack.config.js",
-        "watch": "webpack --watch -c webpack.config.js"
+        "build": "yarn run rollup -c rollup.config.mjs && yarn run tsc --declaration --emitDeclarationOnly --outDir dist/types/",
+        "clean": "rimraf ./dist",
+        "serve": "es-dev-server --root-dir ./ --watch",
+        "watch": "yarn run rollup -c rollup.config.mjs --watch"
     },
     "files": [
         "dist/",
