@@ -39,6 +39,12 @@ export class DockHtmlSplitter extends DockHtmlElement implements DockSplitter {
         }
 
         this._element.addEventListener('pointerdown', (evt: PointerEvent) => {
+            if (!this._renderer.interactive) {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                return;
+            }
+
             this._dockSpace.eventManager.dispatchEvent(
                 new SplitterDraggingStartedEvent(
                     this,

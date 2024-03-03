@@ -28,6 +28,12 @@ export class DockHtmlSpaceContainer extends DockHtmlElement {
     }
 
     public refresh(): void {
+        if (this._renderer.interactive) {
+            this._element?.classList.remove('dockspace-readonly');
+        } else {
+            this._element?.classList.add('dockspace-readonly');
+        }
+
         const width = this._targetElement.offsetWidth;
         const height = this._targetElement.offsetHeight;
 
