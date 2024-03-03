@@ -1,0 +1,75 @@
+.dockspace {
+    background-color: #343434;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.dockspace * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.dockspace-container-row,
+.dockspace-container-column,
+.dockspace-pane,
+.dockspace-splitter-vertical,
+.dockspace-splitter-horizontal {
+    position: absolute;
+}
+
+.dockspace-splitter-vertical,
+.dockspace-splitter-horizontal {
+    background-color: black;
+    z-index: 2;
+}
+
+.dockspace:not(.dockspace-readonly) .dockspace-splitter-vertical  {
+    cursor: ew-resize;
+}
+
+.dockspace:not(.dockspace-readonly) .dockspace-splitter-horizontal {
+    cursor: ns-resize;
+}
+
+.dockspace-pane-ghost {
+    border: 2px dashed #333333;
+    opacity: 0.8;
+    z-index: 2;
+}
+
+.dockspace-pane-tabbar-header {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    user-select: none;
+}
+
+.dockspace-pane-tabbar-header-title {
+    color: white;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.dockspace-pane-tabbar-header-close-button {
+    background-color: #333;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin: 0;
+    padding: 5px;
+}
+
+.dockspace-pane-tabbar-header-close-button:after {
+    content: 'X';
+}
+
+.dockspace-pane-tabbed {
+    display: flex;
+    flex-direction: column;
+}
+
+.dockspace-pane-tabbar-content {
+    flex-grow: 1;
+    position: relative;
+}

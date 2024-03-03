@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DockspaceJS - Example 2 - Row container</title>
+        <link href="css/dockspace.css" rel="stylesheet" media="screen">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #container {
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+        <script src="/dist/umd/dockspace.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const dockspace = new DockspaceJS.DockSpace();
+
+                const pane1 = dockspace.createPane();
+                const pane2 = dockspace.createPane();
+
+                const rowContainer = dockspace.createRowContainer();
+                rowContainer.append(pane1);
+                rowContainer.append(pane2);
+
+                dockspace.container.append(rowContainer);
+
+                const renderer = new DockspaceJS.HtmlRenderer(
+                    document.getElementById('container'),
+                    dockspace,
+                );
+            });
+        </script>
+    </head>
+    <body>
+
+        <div id="container"></div>
+
+    </body>
+</html>

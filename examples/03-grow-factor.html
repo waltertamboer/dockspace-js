@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DockspaceJS - Example 3 - Grow factor</title>
+        <link href="css/dockspace.css" rel="stylesheet" media="screen">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+
+            #container {
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+        <script src="/dist/umd/dockspace.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const dockspace = new DockspaceJS.DockSpace();
+
+                const pane1 = dockspace.createPane();
+                const pane2 = dockspace.createPane();
+                pane2.growFactor = 2; // Making this pane twice as big as the other one.
+
+                dockspace.container.append(pane1);
+                dockspace.container.append(pane2);
+
+                const renderer = new DockspaceJS.HtmlRenderer(
+                    document.getElementById('container'),
+                    dockspace,
+                );
+            });
+        </script>
+    </head>
+    <body>
+
+        <div id="container"></div>
+
+    </body>
+</html>

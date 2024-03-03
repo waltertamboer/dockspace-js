@@ -19,7 +19,7 @@ $ yarn add @waltertamboer/dockspace-js
 ### The stylesheet
 
 Next create a stylesheet, an example can be found 
-[here](https://github.com/waltertamboer/experiment-dockspacejs/blob/master/public/css/dockspace.css). 
+[here](https://github.com/waltertamboer/dockspace-js/blob/master/examples/css/dockspace.css). 
 The stylesheet is important because it sets the position to absolute for the containers.
 Obviously, you can adjust it according to your needs.
 
@@ -31,7 +31,7 @@ Setting the splitter size is done on the renderer.
 renderer.splitterSize = 5;
 ```
 
-## Usage
+## Usage (Typescript)
 
 ### Setup the Dockspace
 The first step is to setup the dockspace. The dockspace is a model that holds all the pane's.
@@ -197,3 +197,20 @@ function runApp(): void {
     // ...
 }
 ```
+
+
+## Examples (Javascript)
+
+You can view some examples by cloning this repository and than building the project:
+
+```bash
+$ yarn run build
+```
+
+Next start a local server by running:
+
+```bash
+$ yarn run serve
+```
+
+If you now open http://localhost:8001/examples/index.html - you can browse through the examples.
