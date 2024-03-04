@@ -214,3 +214,9 @@ $ yarn run serve
 ```
 
 If you now open http://localhost:8001/examples/index.html - you can browse through the examples.
+
+## Development
+
+To develop on this project, it's recommended to open two terminals:
+1. To watch for changing files via `yarn run watch`
+2. A second terminal to serve the files via `yarn run serve` 
