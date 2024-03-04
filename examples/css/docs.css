@@ -1,0 +1,76 @@
+body {
+    background-color: #fff;
+    color: #fff;
+    font-family: Arial;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+#docs {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#docs-header {
+    background: #a057d7;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+#docs-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+#docs-content {
+    flex-grow: 1;
+    padding: 1rem;
+    position: relative;
+}
+
+.docs-no-padding {
+    padding: 0 !important;
+}
+
+#docs-sidebar {
+    background-color: #ad74d1;
+    flex-shrink: 0;
+    padding: 1rem;
+    width: 200px;
+}
+
+#docs-sidebar h4 {
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+#docs-sidebar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#docs-sidebar li {
+    margin: 0;
+    padding: 0;
+}
+
+#docs-sidebar a {
+    background-color: #b982db;
+    color: #fff;
+    display: block;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+}
+
+#dockspace-viewport {
+    display: block;
+    height: 100%;
+    width: 100%;
+}

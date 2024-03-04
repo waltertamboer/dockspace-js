@@ -1,23 +1,23 @@
 import { DockPane } from '../../../dock-pane';
 import { DockHtmlElement } from '../element/dock-html-element';
-import { HtmlRenderer } from '../html-renderer';
-import { PaneHtmlRenderer } from './pane-html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
+import { DockPaneHtmlBuilder } from './dock-pane-html-builder';
 import { DockSpace } from '../../../dock-space';
 import { PaneMovementStartedEvent } from '../../../event/pane-movement-started-event';
 import { PaneClosedEvent } from '../../../event/pane-closed-event';
 
-export abstract class TabbarHtmlRenderer extends PaneHtmlRenderer {
+export abstract class DockTabbarHtmlBuilder extends DockPaneHtmlBuilder {
     public constructor(
         private readonly _dockSpace: DockSpace,
     ) {
         super();
     }
 
-    protected abstract getHeaderLabel(renderer: HtmlRenderer, pane: DockPane): string;
+    protected abstract getHeaderLabel(renderer: DockHtmlRenderer, pane: DockPane): string;
 
-    protected abstract renderTab(renderer: HtmlRenderer, parentElement: HTMLElement, pane: DockPane): void;
+    protected abstract buildTab(renderer: DockHtmlRenderer, parentElement: HTMLElement, pane: DockPane): void;
 
-    protected renderHtml(renderer: HtmlRenderer, parentElement: DockHtmlElement, pane: DockPane): void {
+    protected buildHtml(renderer: DockHtmlRenderer, parentElement: DockHtmlElement, pane: DockPane): void {
         const paneElement = renderer.elements.get(pane.id);
 
         const containerElement = paneElement.element;
@@ -42,7 +42,7 @@ export abstract class TabbarHtmlRenderer extends PaneHtmlRenderer {
         pane.parentContainer?.removePane(pane);
     }
 
-    protected buildHeader(renderer: HtmlRenderer, pane: DockPane, containerElement: HTMLElement): void {
+    protected buildHeader(renderer: DockHtmlRenderer, pane: DockPane, containerElement: HTMLElement): void {
         const containerHeader = document.createElement('div');
         containerHeader.classList.add('dockspace-pane-tabbar-header');
         containerHeader.addEventListener('pointerdown', (evt: PointerEvent): void => {
@@ -53,7 +53,7 @@ export abstract class TabbarHtmlRenderer extends PaneHtmlRenderer {
         this.buildHeaderContent(renderer, pane, containerHeader);
     }
 
-    protected buildHeaderContent(renderer: HtmlRenderer, pane: DockPane, containerHeader: HTMLDivElement) {
+    protected buildHeaderContent(renderer: DockHtmlRenderer, pane: DockPane, containerHeader: HTMLDivElement) {
         const title = document.createElement('span');
         title.classList.add('dockspace-pane-tabbar-header-title');
         title.innerHTML = this.getHeaderLabel(renderer, pane);
@@ -67,12 +67,12 @@ export abstract class TabbarHtmlRenderer extends PaneHtmlRenderer {
         containerHeader.appendChild(closeButton);
     }
 
-    protected buildContent(renderer: HtmlRenderer, pane: DockPane, containerElement: HTMLElement): void {
+    protected buildContent(renderer: DockHtmlRenderer, pane: DockPane, containerElement: HTMLElement): void {
         const contentContainer = document.createElement('div');
         contentContainer.classList.add('dockspace-pane-tabbar-content');
         containerElement.appendChild(contentContainer);
 
-        this.renderTab(renderer, contentContainer, pane);
+        this.buildTab(renderer, contentContainer, pane);
     }
 
     private triggerPaneMovement(pane: DockPane, evt: PointerEvent) {

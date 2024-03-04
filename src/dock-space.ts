@@ -3,7 +3,7 @@ import { DocumentEventManager } from './event-manager/document-event-manager';
 import { EventManager } from './event-manager/event-manager';
 import { DockPane } from './dock-pane';
 import { RefreshEvent } from './event/refresh-event';
-import { DockPaneRenderer } from './dock-pane-renderer';
+import { DockPaneBuilder } from './dock-pane-builder';
 import { DockContainerRow } from './dock-container-row';
 
 /**
@@ -57,11 +57,11 @@ export class DockSpace {
     /**
      * Creates a pane within this dock space.
      *
-     * @param renderer The renderer used to render the content of the pane.
+     * @param renderer The renderer used to build the content of the pane.
      *
      * @return Returns the pane that was created.
      */
-    public createPane(renderer: DockPaneRenderer | null = null): DockPane {
+    public createPane(renderer: DockPaneBuilder | null = null): DockPane {
         return new DockPane(this, renderer);
     }
 

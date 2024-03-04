@@ -2,7 +2,7 @@ import { DockItem } from './dock-item';
 import { DockSize } from './dock-size';
 import { DockSpace } from './dock-space';
 import { DockContainer } from './dock-container';
-import { DockPaneRenderer } from './dock-pane-renderer';
+import { DockPaneBuilder } from './dock-pane-builder';
 
 export class DockPane extends DockItem {
     /**
@@ -54,7 +54,7 @@ export class DockPane extends DockItem {
      */
     public constructor(
         dockSpace: DockSpace,
-        private readonly _renderer: DockPaneRenderer | null,
+        private readonly _renderer: DockPaneBuilder | null,
     ) {
         super(dockSpace);
 
@@ -117,7 +117,7 @@ export class DockPane extends DockItem {
         this._maxWidth = value;
     }
 
-    public get renderer(): DockPaneRenderer | null {
+    public get renderer(): DockPaneBuilder | null {
         return this._renderer;
     }
 }

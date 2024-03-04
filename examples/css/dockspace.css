@@ -1,7 +1,8 @@
 .dockspace {
-    background-color: #343434;
+    background-color: #d9d9d9;
     box-sizing: border-box;
     overflow: hidden;
+    position: relative;
 }
 
 .dockspace * {

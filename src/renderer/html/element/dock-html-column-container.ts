@@ -1,5 +1,5 @@
 import { DockContainerColumn } from '../../../dock-container-column';
-import { HtmlRenderer } from '../html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
 import { DockHtmlElement } from './dock-html-element';
 import { buildHtmlPanes } from './buld-html-panes';
 import { DockHtmlPane } from './dock-html-pane';
@@ -9,7 +9,7 @@ import { DockSpace } from '../../../dock-space';
 export class DockHtmlColumnContainer extends DockHtmlElement {
     public constructor(
         private readonly _dockSpace: DockSpace,
-        private readonly _renderer: HtmlRenderer,
+        private readonly _renderer: DockHtmlRenderer,
         private readonly _container: DockContainerColumn,
     ) {
         super();

@@ -3,18 +3,8 @@
     <head>
         <meta charset="utf-8">
         <title>DockspaceJS - Example 5 - Splitter size</title>
-        <link href="css/dockspace.css" rel="stylesheet" media="screen">
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            #container {
-                height: 100vh;
-                width: 100vw;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/docs.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/dockspace.css">
         <script src="/dist/umd/dockspace.js"></script>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
@@ -26,19 +16,39 @@
                 dockspace.container.append(pane1);
                 dockspace.container.append(pane2);
 
-                const renderer = new DockspaceJS.HtmlRenderer(
-                    document.getElementById('container'),
+                const renderer = new DockspaceJS.DockHtmlRenderer(
+                    document.getElementById('dockspace-viewport'),
                     dockspace,
                 );
 
                 renderer.splitterSize = 15; // Set the splitter size in pixels
-                renderer.refresh(); // Need to refresh the render state
+                renderer.refresh(); // Need to refresh the build state
             });
         </script>
     </head>
     <body>
 
-        <div id="container"></div>
+
+        <div id="docs">
+            <div id="docs-header">
+                DockspaceJS
+            </div>
+            <div id="docs-container">
+                <div id="docs-sidebar">
+                    <h4>View examples</h4>
+
+                    <ul id="docs-side-bar-menu">
+                    </ul>
+                </div>
+                <div id="docs-content">
+
+                    <div id="dockspace-viewport"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="js/docs.js"></script>
 
     </body>
 </html>

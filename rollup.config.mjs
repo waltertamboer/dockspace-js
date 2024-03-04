@@ -20,7 +20,7 @@ async function buildInputContent(path) {
     const content = files.map(path => {
         const relativePath = '.' + path.replace(directory, '').replace('.ts', '');
 
-        if (relativePath === './index' || relativePath === './index2') {
+        if (relativePath === './index') {
             return null;
         }
 

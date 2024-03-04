@@ -8,7 +8,7 @@ import { DockHtmlRowContainer } from './dock-html-row-container';
 import { DockHtmlSplitter } from './dock-html-splitter';
 import { DockPane } from '../../../dock-pane';
 import { DockSpace } from '../../../dock-space';
-import { HtmlRenderer } from '../html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
 
 function findHtmlElement(parentNode: DockHtmlElement, referenceNode: DockPane): DockHtmlElement | null {
     let node = parentNode.firstChild;
@@ -63,7 +63,7 @@ function registerNode(
 
 export function buildHtmlPane(
     dockSpace: DockSpace,
-    renderer: HtmlRenderer,
+    renderer: DockHtmlRenderer,
     parentNode: DockHtmlElement,
     container: DockContainer,
     pane: DockPane,
@@ -91,7 +91,7 @@ export function buildHtmlPane(
 
 export function buildHtmlPanes(
     dockSpace: DockSpace,
-    renderer: HtmlRenderer,
+    renderer: DockHtmlRenderer,
     parentNode: DockHtmlElement,
     container: DockContainer,
 ): void {

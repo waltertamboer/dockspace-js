@@ -8,17 +8,17 @@ import { DockSplitterDirection } from '../../dock-splitter-direction';
 import { PaneAddedEvent } from '../../event/pane-added-event';
 import { buildHtmlPane } from './element/buld-html-panes';
 import { PaneRemovedEvent } from '../../event/pane-removed-event';
-import { HtmlRendererElementMap } from './html-renderer-element-map';
+import { DockHtmlRendererElementMap } from './dock-html-renderer-element-map';
 import { PaneMovementStartedEvent } from '../../event/pane-movement-started-event';
 import { PaneMovementStoppedEvent } from '../../event/pane-movement-stopped-event';
 import { PanePointerEnterEvent } from '../../event/pane-pointer-enter-event';
 import { DockPane } from '../../dock-pane';
 import { DockContainer } from '../../dock-container';
 
-export class HtmlRenderer implements Renderer {
+export class DockHtmlRenderer implements Renderer {
     private _interactive: boolean;
     private _splitterSize: number;
-    private _elementMap: HtmlRendererElementMap;
+    private _elementMap: DockHtmlRendererElementMap;
     private _dockSpaceContainerElement: DockHtmlSpaceContainer;
 
     private _movingSplitterEvent: SplitterDraggingStartedEvent | null;
@@ -37,7 +37,7 @@ export class HtmlRenderer implements Renderer {
     ) {
         this._interactive = true;
         this._splitterSize = 5;
-        this._elementMap = new HtmlRendererElementMap();
+        this._elementMap = new DockHtmlRendererElementMap();
         this._dockSpaceContainerElement = new DockHtmlSpaceContainer(this._dockSpace, this, this._targetElement);
         // this._dockSpaceContainerElement.debug();
 
@@ -179,7 +179,7 @@ export class HtmlRenderer implements Renderer {
         });
     }
 
-    public get elements(): HtmlRendererElementMap {
+    public get elements(): DockHtmlRendererElementMap {
         return this._elementMap;
     }
 

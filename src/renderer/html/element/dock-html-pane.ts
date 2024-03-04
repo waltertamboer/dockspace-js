@@ -1,4 +1,4 @@
-import { HtmlRenderer } from '../html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
 import { DockPane } from '../../../dock-pane';
 import { DockHtmlElement } from './dock-html-element';
 import { DockSpace } from '../../../dock-space';
@@ -8,7 +8,7 @@ import { PanePointerLeaveEvent } from '../../../event/pane-pointer-leave-event';
 export class DockHtmlPane extends DockHtmlElement {
     public constructor(
         private readonly _dockSpace: DockSpace,
-        private readonly _renderer: HtmlRenderer,
+        private readonly _renderer: DockHtmlRenderer,
         private readonly _pane: DockPane,
     ) {
         super();
@@ -25,7 +25,7 @@ export class DockHtmlPane extends DockHtmlElement {
             this._dockSpace.eventManager.dispatchEvent(new PanePointerLeaveEvent(this._pane));
         });
 
-        this._pane.renderer?.render(this._renderer, this._pane);
+        this._pane.renderer?.build(this._renderer, this._pane);
     }
 
     public get pane(): DockPane {

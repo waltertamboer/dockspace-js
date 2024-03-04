@@ -1,12 +1,12 @@
 import { DockHtmlColumnContainer } from './dock-html-column-container';
 import { DockHtmlElement } from './dock-html-element';
 import { DockSpace } from '../../../dock-space';
-import { HtmlRenderer } from '../html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
 
 export class DockHtmlSpaceContainer extends DockHtmlElement {
     public constructor(
         private readonly _dockSpace: DockSpace,
-        private readonly _renderer: HtmlRenderer,
+        private readonly _renderer: DockHtmlRenderer,
         private readonly _targetElement: HTMLElement,
     ) {
         super();
@@ -34,8 +34,8 @@ export class DockHtmlSpaceContainer extends DockHtmlElement {
             this._element?.classList.add('dockspace-readonly');
         }
 
-        const width = this._targetElement.offsetWidth;
-        const height = this._targetElement.offsetHeight;
+        const width = this.getElementWidth(this._targetElement);
+        const height = this.getElementHeight(this._targetElement);
 
         this.element.style.width = `${width}px`;
         this.element.style.height = `${height}px`;

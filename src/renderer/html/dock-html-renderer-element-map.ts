@@ -1,6 +1,6 @@
 import { DockHtmlElement } from './element/dock-html-element';
 
-export class HtmlRendererElementMap {
+export class DockHtmlRendererElementMap {
     private readonly _items: Map<number, DockHtmlElement>;
 
     public constructor() {

@@ -2,7 +2,7 @@ import { DockHtmlElement } from './dock-html-element';
 import { DockPosition } from '../../../dock-position';
 import { DockSize } from '../../../dock-size';
 import { DockSplitterDirection } from '../../../dock-splitter-direction';
-import { HtmlRenderer } from '../html-renderer';
+import { DockHtmlRenderer } from '../dock-html-renderer';
 import { SplitterDraggingStartedEvent } from '../../../event/splitter-dragging-started-event';
 import { DockSpace } from '../../../dock-space';
 import { DockHtmlPane } from './dock-html-pane';
@@ -16,7 +16,7 @@ export class DockHtmlSplitter extends DockHtmlElement implements DockSplitter {
 
     public constructor(
         private readonly _dockSpace: DockSpace,
-        private readonly _renderer: HtmlRenderer,
+        private readonly _renderer: DockHtmlRenderer,
         private readonly _container: DockContainer,
     ) {
         super();

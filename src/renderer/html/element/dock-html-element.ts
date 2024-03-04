@@ -117,6 +117,28 @@ export abstract class DockHtmlElement {
         return result;
     }
 
+    protected getElementHeight(element: HTMLElement): number {
+        let result = element.clientHeight;
+
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('margin-top'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('margin-bottom'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('border-top-width'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('border-bottom-width'));
+
+        return result;
+    }
+
+    protected getElementWidth(element: HTMLElement): number {
+        let result = element.clientWidth;
+
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('margin-left'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('margin-right'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('border-left-width'));
+        result += parseFloat(window.getComputedStyle(element, null).getPropertyValue('border-right-width'));
+
+        return result;
+    }
+
     /**
      * Retrieves the debug label for this element.
      *

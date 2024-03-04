@@ -70,7 +70,7 @@ function runApp(): void {
 
 ### Setup renderer
 
-Next we need to setup the renderer. Let's setup an HTML renderer. The refresh method should be called to render 
+Next we need to setup the renderer. Let's setup an HTML renderer. The refresh method should be called to build 
 the dockspace.
 
 ```ts
@@ -85,7 +85,7 @@ function runApp(): void {
         throw new Error("Failed to find element with id 'container'.");
     }
 
-    const renderer = new HtmlRenderer(targetElement, dockSpace);
+    const renderer = new DockHtmlRenderer(targetElement, dockSpace);
     renderer.interactive = true;
     renderer.splitterSize = 5;
     renderer.refresh();
@@ -143,7 +143,7 @@ function runApp(): void {
 ### Using pane renderers
 
 A pane renderer is a way to populate the content of the pane. The type of pane renderer depends on the type
-of renderer that is being used. When the HTML renderer is used, you can extend the PaneHtmlRenderer class.
+of renderer that is being used. When the HTML renderer is used, you can extend the DockPaneHtmlBuilder class.
 
 ```ts
 function runApp(): void {
@@ -151,12 +151,12 @@ function runApp(): void {
 
     // ...
     
-    const pane = dockSpace.createPane(new (class extends PaneHtmlRenderer {
-        protected getHeaderLabel(renderer: HtmlRenderer, pane: DockPane): string {
+    const pane = dockSpace.createPane(new (class extends DockPaneHtmlBuilder {
+        protected getHeaderLabel(renderer: DockHtmlRenderer, pane: DockPane): string {
             return 'Pane ' + pane.id.toString();
         }
 
-        protected renderHtml(renderer: HtmlRenderer, parentElement: DockHtmlElement, pane: DockPane): void {
+        protected buildHtml(renderer: DockHtmlRenderer, parentElement: DockHtmlElement, pane: DockPane): void {
             const div = buildDiv(renderer, pane);
 
             div.style.backgroundColor = 'pink';
@@ -171,7 +171,7 @@ function runApp(): void {
 
 ### Drag and drop pane's to different locations
 
-In order to drag and drop pane's you can extend the TabbarHtmlRenderer renderer. This makes it 
+In order to drag and drop pane's you can extend the DockTabbarHtmlBuilder renderer. This makes it 
 possible to drag and drop a pane to a different location.
 
 ```ts
@@ -180,12 +180,12 @@ function runApp(): void {
 
     // ...
 
-    const pane = dockSpace.createPane(new (class extends TabbarHtmlRenderer {
-        protected getHeaderLabel(renderer: HtmlRenderer, pane: DockPane): string {
+    const pane = dockSpace.createPane(new (class extends DockTabbarHtmlBuilder {
+        protected getHeaderLabel(renderer: DockHtmlRenderer, pane: DockPane): string {
             return 'Pane ' + pane.id.toString();
         }
 
-        protected renderTab(renderer: HtmlRenderer, parentElement: HTMLElement, pane: DockPane): void {
+        protected buildTab(renderer: DockHtmlRenderer, parentElement: HTMLElement, pane: DockPane): void {
             const div = buildDiv(renderer, pane);
 
             div.style.backgroundColor = 'pink';

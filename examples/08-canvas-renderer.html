@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>DockspaceJS - Example 4 - No interaction</title>
+        <title>DockspaceJS - Example 8 - Canvas renderer</title>
         <link rel="stylesheet" type="text/css" media="screen" href="css/docs.css">
         <link rel="stylesheet" type="text/css" media="screen" href="css/dockspace.css">
         <script src="/dist/umd/dockspace.js"></script>
@@ -16,18 +16,26 @@
                 dockspace.container.append(pane1);
                 dockspace.container.append(pane2);
 
-                const renderer = new DockspaceJS.DockHtmlRenderer(
-                    document.getElementById('dockspace-viewport'),
-                    dockspace,
-                );
+                const viewport = document.getElementById('dockspace-viewport');
+                viewport.width = viewport.parentElement.clientWidth - 16 - 16;
+                viewport.height = viewport.parentElement.clientHeight - 16 - 16;
+                viewport.style.width = viewport.width + 'px';
+                viewport.style.height = viewport.height + 'px';
 
-                renderer.interactive = false; // Disable interaction
-                renderer.refresh(); // Refresh the build state
+                const renderArea = {
+                    x: 0,
+                    y: 0,
+                    width: viewport.width,
+                    height: viewport.height,
+                };
+
+                const context = viewport.getContext('2d');
+
+                const renderer = new DockspaceJS.DockCanvasRenderer(context, dockspace, renderArea);
             });
         </script>
     </head>
     <body>
-
 
         <div id="docs">
             <div id="docs-header">
@@ -42,7 +50,7 @@
                 </div>
                 <div id="docs-content">
 
-                    <div id="dockspace-viewport"></div>
+                    <canvas id="dockspace-viewport"></canvas>
 
                 </div>
             </div>

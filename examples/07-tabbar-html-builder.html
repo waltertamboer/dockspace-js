@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DockspaceJS - Example 7 - Tabbar Pane Renderer</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="css/docs.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="css/dockspace.css">
+        <script src="/dist/umd/dockspace.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const dockspace = new DockspaceJS.DockSpace();
+
+                const pane1 = dockspace.createPane(new (class extends DockspaceJS.DockTabbarHtmlBuilder {
+                    getHeaderLabel() {
+                        return 'Pane 1';
+                    }
+
+                    buildTab(htmlRenderer, parentElement, pane) {
+                        const div = document.createElement('div')
+
+                        div.style.backgroundColor = 'pink';
+                        div.style.position = 'absolute';
+                        div.style.left = 0;
+                        div.style.right = 0;
+                        div.style.top = 0;
+                        div.style.bottom = 0;
+                        div.innerText = 'This is the left pane';
+
+                        parentElement.appendChild(div);
+                    }
+                })(dockspace));
+
+                const pane2 = dockspace.createPane(new (class extends DockspaceJS.DockTabbarHtmlBuilder {
+                    getHeaderLabel() {
+                        return 'Pane 2';
+                    }
+
+                    buildTab(htmlRenderer, parentElement, pane) {
+                        const div = document.createElement('div')
+
+                        div.style.backgroundColor = 'purple';
+                        div.style.position = 'absolute';
+                        div.style.left = 0;
+                        div.style.right = 0;
+                        div.style.top = 0;
+                        div.style.bottom = 0;
+                        div.innerText = 'This is the right pane';
+
+                        parentElement.appendChild(div);
+                    }
+                })(dockspace));
+
+                dockspace.container.append(pane1);
+                dockspace.container.append(pane2);
+
+                const renderer = new DockspaceJS.DockHtmlRenderer(
+                    document.getElementById('dockspace-viewport'),
+                    dockspace,
+                );
+            });
+        </script>
+    </head>
+    <body>
+
+        <div id="docs">
+            <div id="docs-header">
+                DockspaceJS
+            </div>
+            <div id="docs-container">
+                <div id="docs-sidebar">
+                    <h4>View examples</h4>
+
+                    <ul id="docs-side-bar-menu">
+                    </ul>
+                </div>
+                <div id="docs-content">
+
+                    <div id="dockspace-viewport"></div>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="js/docs.js"></script>
+
+    </body>
+</html>
