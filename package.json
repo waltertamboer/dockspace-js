@@ -1,7 +1,7 @@
 {
     "name": "@waltertamboer/dockspace-js",
     "license": "MIT",
-    "version": "0.0.15",
+    "version": "0.0.16",
     "homepage": "https://github.com/waltertamboer/dockspace-js",
     "main": "dist/cjs/dockspace.js",
     "module": "dist/es/dockspace.js",
